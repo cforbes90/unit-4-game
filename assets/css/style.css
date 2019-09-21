@@ -1,0 +1,27 @@
+#gem-holder{
+    background: blue;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+.gem {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+/*#gem1{
+    width: 200px;
+    height: 200px;
+}
+#gem2{
+    width: 200px;
+    height: 200px;
+}
+#gem3{
+    width: 200px;
+    height: 200px;
+}
+#gem4{
+    width: 200px;
+    height: 200px;
+}*/

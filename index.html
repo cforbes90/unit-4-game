@@ -32,15 +32,76 @@
     <div id="random-number-holder"></div>
     <div id="records-box"> Wins: <p>Losses: </p></div>
     <div id="gem-holder">
-        <img src="assets/images/bluegem.jpg">
-        <img src="assets/images/pinkgem.png">
-        <img src="assets/images/purplegem.jpg">
-        <img src="assets/images/yellowgem.jpg">
+        <img id="gem1" class= "gem" src="assets/images/bluegem.jpg">
+        <img id="gem2"class= "gem"src="assets/images/pinkgem.png">
+        <img id="gem3" class= "gem" src="assets/images/purplegem.jpg">
+        <img id="gem4" class= "gem" src="assets/images/yellowgem.jpg">
         
     </div>
+    <p id="demo"></p>
+    <div> Your total score is:</div>
+    <div id="userdisplaytotal"> </div>
 
 
+    <script type="text/javascript"> 
+    
 
+
+        var computerRandomValue =0 
+        var gem1=0;
+        var gem2=0;
+        var gem3=0;
+        var gem4=0;
+       
+    
+       var gemCollection = [gem1, gem2, gem3, gem4];
+      // gemCollection.forEach(randomizeValue);
+        // console.log(gem1);
+        // console.log(gem2);
+        // console.log(gem4);
+         console.log(gemCollection);
+        
+         //gemCollection.forEach(randomizeValue(randomHolder));
+
+         var numbers = [65, 44, 12, 4];
+            numbers.forEach(myFunction)
+
+        function myFunction(item, index, arr) {
+        arr[index] = Math.floor(Math.random() * 12)+1;
+        gemCollection=arr;
+        console.log("Arr's value is " +arr);
+        console.log("gemCollection's value is " +gemCollection);
+        }
+
+        document.getElementById("demo").innerHTML = numbers;
+      
+        
+         function randomizeValue() {
+          
+           // for (i=0; i<gemCollection.length; i++){
+                 randomHolder=Math.floor(Math.random() * 12)+1;
+                
+                //gemCollection[i]=r;
+                computerRandomValue = Math.floor(Math.random() * 120)+1;
+                console.log(gem1);
+                console.log(gem2);
+                console.log(gem3);
+                console.log(gem4);
+                //console.log(computerRandomValue);
+            //}         
+       }
+       //randomizeValue();
+       
+       
+      
+
+        $(".gem").on("click", function() {
+            alert("A gem has been clicked!")
+            randomizeValue();
+           // console.log(computerRandomValue);
+        });
+    
+    </script>
 
 
 
