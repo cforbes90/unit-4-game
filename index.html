@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap File -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
   <!-- JQuery -->
@@ -32,11 +31,39 @@
     <div id="random-number-holder"></div>
     <div id="records-box"> Wins: <p>Losses: </p></div>
     <div id="gem-holder">
-        <img id="gem1" class= "gem" src="assets/images/bluegem.jpg">
-        <img id="gem2"class= "gem"src="assets/images/pinkgem.png">
-        <img id="gem3" class= "gem" src="assets/images/purplegem.jpg">
-        <img id="gem4" class= "gem" src="assets/images/yellowgem.jpg">
+            <div id="gem1"cclass="card" style="width: 18rem;">
+                    <img src="assets/images/bluegem.jpg" class="card-img-top" alt="blue">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                  </div>
+            <div id="gem2" class="card" style="width: 18rem;">
+                        <img src="assets/images/pinkgem.png" class="card-img-top" alt="pink">
+                        <div class="card-body">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+            <div id="gem3" class="card" style="width: 18rem;">
+                            <img src="assets/images/purplegem.jpg"" class="card-img-top" alt="purple">
+                            <div class="card-body">
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                          </div>
+            <div id="gem4"class="card" style="width: 18rem;">
+                                <img src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                              </div>
+       
+       
+       
         
+        
+        <p id="gem1-text">1 </p>
+        <p id="gem2-text">2  </p>
+        <p id="gem3-text">  </p>
+        <p id="gem4-text">  </p>
     </div>
     <p id="demo"></p>
     <div> Your total score is:</div>
@@ -48,56 +75,81 @@
 
 
         var computerRandomValue =0 
-        var gem1=0;
-        var gem2=0;
-        var gem3=0;
-        var gem4=0;
+         var gem1=0;
+         var gem2=0;
+         var gem3=0;
+         var gem4=0;
        
-    
-       var gemCollection = [gem1, gem2, gem3, gem4];
+        var gem1Text= document.getElementById("gem1-text");
+        var gem2Text= document.getElementById("gem2-text");
+        var gem3Text=document.getElementById("gem3-text");
+        var gem4Text=document.getElementById("gem4-text");
+
+      //var gemCollection = ["gem1", "gem2", "gem3", "gem4"];
+
       // gemCollection.forEach(randomizeValue);
         // console.log(gem1);
         // console.log(gem2);
         // console.log(gem4);
-         console.log(gemCollection);
+         //console.log(gemCollection);
         
          //gemCollection.forEach(randomizeValue(randomHolder));
 
-         var numbers = [65, 44, 12, 4];
-            numbers.forEach(myFunction)
+         
+         //function randomizeGems(gemArray){
+           // var gemArray = [gem1, gem2, gem3, gem4];
+            
+             //for(i=0;i<gemArray.length;i++){
+                // j=Math.floor(Math.random()*12)+1;
+                // x=gemArray[i];
+                // gemArray[i]=gemArray[j];
+                // document.getElementById("gem1-text").innerHTML = gem1;
+                // document.getElementById("gem2-text").innerHTML = gem2;
+                // document.getElementById("gem3-text").innerHTML = gem3;
+                // document.getElementById("gem4-text").innerHTML = gem4;
 
-        function myFunction(item, index, arr) {
-        arr[index] = Math.floor(Math.random() * 12)+1;
-        gemCollection=arr;
-        console.log("Arr's value is " +arr);
-        console.log("gemCollection's value is " +gemCollection);
-        }
 
-        document.getElementById("demo").innerHTML = numbers;
+
+             //}
+            //}
+         
+        //  var numbers = [65, 44, 12, 4];
+        //     numbers.forEach(myFunction)
+
+        // function myFunction(item, index, arr) {
+        // arr[index] = Math.floor(Math.random() * 12)+1;
+        // gemCollection=arr;
+        // console.log("Arr's value is " +arr);
+        // console.log("gemCollection's value is " +gemCollection);
+        // }
+
+        //document.getElementById("demo").innerHTML = numbers;
+     
+
       
         
-         function randomizeValue() {
-          
-           // for (i=0; i<gemCollection.length; i++){
-                 randomHolder=Math.floor(Math.random() * 12)+1;
-                
-                //gemCollection[i]=r;
+        function randomizeValue() {
+            var gemArray = [gem1, gem2, gem3, gem4];
+            for (i=0; i<gemArray.length; i++){
+                 gemArray[i]=Math.floor(Math.random() * 12)+1;
                 computerRandomValue = Math.floor(Math.random() * 120)+1;
-                console.log(gem1);
-                console.log(gem2);
-                console.log(gem3);
-                console.log(gem4);
-                //console.log(computerRandomValue);
-            //}         
-       }
+            }    
+            gem1Text.textContent =  gemArray[0];
+            gem2Text.textContent =  gemArray[1];
+            gem3Text.textContent =  gemArray[2];
+            gem4Text.textContent =  gemArray[3];     
+        }
        //randomizeValue();
-       
-       
-      
+    //    document.getElementById("gem1-text").innerHTML = gem1;
+    //     document.getElementById("gem2-text").innerHTML = gem2;
+    //     document.getElementById("gem3-text").innerHTML = gem3;
+    //     document.getElementById("gem4-text").innerHTML = gem4;
+ 
 
         $(".gem").on("click", function() {
             alert("A gem has been clicked!")
             randomizeValue();
+            
            // console.log(computerRandomValue);
         });
     
