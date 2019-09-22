@@ -2,117 +2,147 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Captain Planet: The Game</title>
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Bootstrap File -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Crystal Collector!</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
 
-
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 
 <body>
-    <div>
-        <h1> Crystals Collector!</h1>
-    </div> 
-    <section id="text-directions"> You will be given a random number at the start of the Game
-        <p> There are four crystals below. by clicking on a crystal you will add a specific amount of points to your total score.</p>
-        <p> You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
-        <p> The value of each crystal is hidden from you until you click on it</p>
-        <p> Eactime when the game starts, the game will change the values of each crystal.</p>
-        
-    </section>  
-    
-    <div id="random-number-holder"></div>
-    <div id="records-box"> Wins: <p>Losses: </p></div>
-    <div id="gem-holder">
-            <div id="gem1"cclass="card" style="width: 18rem;">
-                    <img src="assets/images/bluegem.jpg" class="card-img-top" alt="blue">
-                    <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                  </div>
-            <div id="gem2" class="card" style="width: 18rem;">
-                        <img src="assets/images/pinkgem.png" class="card-img-top" alt="pink">
-                        <div class="card-body">
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                      </div>
-            <div id="gem3" class="card" style="width: 18rem;">
-                            <img src="assets/images/purplegem.jpg"" class="card-img-top" alt="purple">
+    <div class="container">
+        <div class="row">
+            <div class="col-12" class="text-center">
+                <h1> Crystals Collector! </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" class="text-center">
+                <section id="text-directions"> You will be given a random number at the start of the Game
+                    <p> There are four crystals below. by clicking on a crystal you will add a specific amount of points
+                        to your total score.</p>
+                    <p> You win the game by matching your total score to a random number, you lose the game if your
+                        total score goes above the random number.</p>
+                    <p> The value of each crystal is hidden from you until you click on it</p>
+                    <p> Eactime when the game starts, the game will change the values of each crystal.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6" id="random-number-holder">Here is the space for the random number:     
+            </div>
+            <div class="col-6" id="records-box"> Wins: <p>Losses: </p>
+            </div>
+        </div>
+        <div class="row">
+            
+                <div class="col-3 ">
+                    <div  id="gem1" class="card" style="width: 18rem; height: 18rem;">
+                        <img class="gem" src="assets/images/bluegem.jpg" class="card-img-top" alt="blue" style="width: 200px; height: 200px;">
                             <div class="card-body">
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">Click the Gem to see its value!</p>
                             </div>
-                          </div>
-            <div id="gem4"class="card" style="width: 18rem;">
-                                <img src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow">
-                                <div class="card-body">
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                              </div>
-       
-       
-       
-        
-        
-        <p id="gem1-text">1 </p>
-        <p id="gem2-text">2  </p>
-        <p id="gem3-text">  </p>
-        <p id="gem4-text">  </p>
+                     </div>
+                </div>
+
+                <div class="col-3 ">
+                    <div  id="gem2" class="card" style="width: 18rem; height: 18rem;">
+                        <img class="gem" src="assets/images/pinkgem.png" class="card-img-top" alt="pink" style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <p class="card-text">Click the Gem to see its value!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 ">
+                    <div  id="gem3" class="card" style="width: 18rem; height: 18rem;">
+                        <img class="gem" src="assets/images/purplegem.jpg"" class=" card-img-top" alt="purple" style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <p class="card-text">Click the Gem to see its value!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 ">
+                    <div  id="gem4" class="card" style="width: 18rem; height: 18rem; ">
+                        <img class="gem" src="assets/images/yellowgem.jpg"       class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <p class="card-text">Click the Gem to see its value!</p>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+
+
+
+           /* <p id="gem1-text">1st </p>
+            <p id="gem2-text">2nd </p>
+            <p id="gem3-text">3rd </p>
+            <p id="gem4-text">4th </p> */
+        <div class="row">  
+            <div class = "col-4">
+                <p id="demo"></p>
+                <div> Your total score is:</div>
+                    <div id="userdisplaytotal"> </div>
+            </div>
+        </div>  
     </div>
-    <p id="demo"></p>
-    <div> Your total score is:</div>
-    <div id="userdisplaytotal"> </div>
+
+    <script type="text/javascript">
 
 
-    <script type="text/javascript"> 
-    
 
+        var computerRandomValue = 0
+        var gem1 = 0;
+        var gem2 = 0;
+        var gem3 = 0;
+        var gem4 = 0;
 
-        var computerRandomValue =0 
-         var gem1=0;
-         var gem2=0;
-         var gem3=0;
-         var gem4=0;
-       
-        var gem1Text= document.getElementById("gem1-text");
-        var gem2Text= document.getElementById("gem2-text");
-        var gem3Text=document.getElementById("gem3-text");
-        var gem4Text=document.getElementById("gem4-text");
+        var gem1Text = document.getElementById("gem1-text");
+        var gem2Text = document.getElementById("gem2-text");
+        var gem3Text = document.getElementById("gem3-text");
+        var gem4Text = document.getElementById("gem4-text");
+        var computerRandomValueText = document.getElementById("random-number-holder");
+        //var gemCollection = ["gem1", "gem2", "gem3", "gem4"];
 
-      //var gemCollection = ["gem1", "gem2", "gem3", "gem4"];
-
-      // gemCollection.forEach(randomizeValue);
+        // gemCollection.forEach(randomizeValue);
         // console.log(gem1);
         // console.log(gem2);
         // console.log(gem4);
-         //console.log(gemCollection);
-        
-         //gemCollection.forEach(randomizeValue(randomHolder));
+        //console.log(gemCollection);
 
-         
-         //function randomizeGems(gemArray){
-           // var gemArray = [gem1, gem2, gem3, gem4];
-            
-             //for(i=0;i<gemArray.length;i++){
-                // j=Math.floor(Math.random()*12)+1;
-                // x=gemArray[i];
-                // gemArray[i]=gemArray[j];
-                // document.getElementById("gem1-text").innerHTML = gem1;
-                // document.getElementById("gem2-text").innerHTML = gem2;
-                // document.getElementById("gem3-text").innerHTML = gem3;
-                // document.getElementById("gem4-text").innerHTML = gem4;
+        //gemCollection.forEach(randomizeValue(randomHolder));
 
 
+        //function randomizeGems(gemArray){
+        // var gemArray = [gem1, gem2, gem3, gem4];
 
-             //}
-            //}
-         
+        //for(i=0;i<gemArray.length;i++){
+        // j=Math.floor(Math.random()*12)+1;
+        // x=gemArray[i];
+        // gemArray[i]=gemArray[j];
+        // document.getElementById("gem1-text").innerHTML = gem1;
+        // document.getElementById("gem2-text").innerHTML = gem2;
+        // document.getElementById("gem3-text").innerHTML = gem3;
+        // document.getElementById("gem4-text").innerHTML = gem4;
+
+
+
+        //}
+        //}
+
         //  var numbers = [65, 44, 12, 4];
         //     numbers.forEach(myFunction)
 
@@ -124,35 +154,37 @@
         // }
 
         //document.getElementById("demo").innerHTML = numbers;
-     
 
-      
-        
+
+
+
         function randomizeValue() {
             var gemArray = [gem1, gem2, gem3, gem4];
-            for (i=0; i<gemArray.length; i++){
-                 gemArray[i]=Math.floor(Math.random() * 12)+1;
-                computerRandomValue = Math.floor(Math.random() * 120)+1;
-            }    
-            gem1Text.textContent =  gemArray[0];
-            gem2Text.textContent =  gemArray[1];
-            gem3Text.textContent =  gemArray[2];
-            gem4Text.textContent =  gemArray[3];     
+            for (i = 0; i < gemArray.length; i++) {
+                gemArray[i] = Math.floor(Math.random() * 12) + 1;
+                computerRandomValue = Math.floor(Math.random() * 120) + 1;
+                console.log("Computerrandomvalue is " + computerRandomValue)
+                computerRandomValueText.textContent = computerRandomValue;
+            }
+            gem1Text.textContent = gemArray[0];
+            gem2Text.textContent = gemArray[1];
+            gem3Text.textContent = gemArray[2];
+            gem4Text.textContent = gemArray[3];
         }
-       //randomizeValue();
-    //    document.getElementById("gem1-text").innerHTML = gem1;
-    //     document.getElementById("gem2-text").innerHTML = gem2;
-    //     document.getElementById("gem3-text").innerHTML = gem3;
-    //     document.getElementById("gem4-text").innerHTML = gem4;
- 
+        //randomizeValue();
+        //    document.getElementById("gem1-text").innerHTML = gem1;
+        //     document.getElementById("gem2-text").innerHTML = gem2;
+        //     document.getElementById("gem3-text").innerHTML = gem3;
+        //     document.getElementById("gem4-text").innerHTML = gem4;
 
-        $(".gem").on("click", function() {
+
+        $(".gem").on("click", function () {
             alert("A gem has been clicked!")
             randomizeValue();
-            
-           // console.log(computerRandomValue);
+
+            // console.log(computerRandomValue);
         });
-    
+
     </script>
 
 

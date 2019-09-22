@@ -1,13 +1,17 @@
 #gem-holder{
-    background: blue;
+   
     width: 200px;
     height: 200px;
-    float: left;
+    /*display: inline-block;
+    
 }
 .gem {
     width: 200px;
     height: 200px;
-    float: left;
+    
+}
+.card {
+    display: none;
 }
 /*#gem1{
     width: 200px;
