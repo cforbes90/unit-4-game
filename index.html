@@ -32,11 +32,10 @@
                     <p> There are four gems below. By clicking on a gem you will add a specific amount of points to your total score.</p>
                     <p> You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
                     <p> The value of each gem is hidden from you until you click on it.</p>
-                    <p> Each time when the game starts, the values of the gems will change.</p>
+                    <p> Each time the game starts the values of the gems will change.</p>
                 </section>
             </div>
         </div>
-
         <div class="row">
             <div class="col-6" id="random-number-holder">Try to match: </div>
             <div class="col-6" id="records-box">
@@ -47,53 +46,36 @@
         <div class="row">
             <div class="col-3">
                 <div id="gem1" class="card" style="width: 18rem; height: 18rem;">
-
-                    <img class="gem" value="0" src="assets/images/bluegem.jpg" class="card-img-top" alt="blue"
-                        style="width: 200px; height: 200px;">
-
-                    <div class="card-body">
+                    <img class="gem" value="0" src="assets/images/bluegem.jpg"     class="card-img-top" alt="blue" style="width: 200px; height: 200px;">
+                        <div class="card-body">
                         <p id="gem1-text" class="card-text">Click the Gem to see its value!</p>
-                    </div>
+                        </div>
                 </div>
             </div>
-
             <div class="col-3 ">
                 <div id="gem2" class="card" style="width: 18rem; height: 18rem;">
-
-                    <img class="gem" value="1" src="assets/images/pinkgem.png" class="card-img-top" alt="pink"
-                        style="width: 200px; height: 200px;">
-
-                    <div class="card-body">
-                        <p id="gem2-text" class="card-text">Click the Gem to see its value!</p>
-                    </div>
+                    <img class="gem" value="1" src="assets/images/pinkgem.png" class="card-img-top" alt="pink"  style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <p id="gem2-text" class="card-text">Click the Gem to see its value!</p>
+                        </div>
                 </div>
             </div>
-
             <div class="col-3 ">
                 <div id="gem3" class="card" style="width: 18rem; height: 18rem;">
-
-                    <img class="gem" value="2" src="assets/images/purplegem.jpg"" class=" card-img-top" alt="purple"
-                        style="width: 200px; height: 200px;">
-
+                   <img class="gem" value="2" src="assets/images/purplegem.jpg"" class="    card-img-top" alt="purple" style="width: 200px; height: 200px;">
                     <div class="card-body">
                         <p id="gem3-text" class="card-text">Click the Gem to see its value!</p>
                     </div>
                 </div>
-
             </div>
-
             <div class="col-3 ">
                 <div id="gem4" class="card random-value" style="width: 18rem; height: 18rem; ">
-
-                    <img class="gem" value="3" src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow"
-                        style="width: 200px; height: 200px;">
-
-                    <div class="card-body">
+                    <img class="gem" value="3" src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
+                        <div class="card-body">
                         <p id="gem4-text" class="card-text">Click the Gem to see its value!</p>
-                    </div>
+                        </div>
                 </div>
             </div>
-
         </div>
 
         <div class="row">
@@ -121,17 +103,8 @@
             var gemArray = [gem1, gem2, gem3, gem4];
             var computerRandomValue = 1000;
 
-            //COMMUNICATION BETWEEN JAVASCRIPT AND HTML ELEMENTS
-            // var gem1Text = document.getElementById("gem1-text");
-            // var gem2Text = document.getElementById("gem2-text");
-            // var gem3Text = document.getElementById("gem3-text");
-            // var gem4Text = document.getElementById("gem4-text");
-            // var winsText = document.getElementById("wins-text");
-            // var lossesText = document.getElementById("losses-text");
-            //var computerRandomValueText = document.getElementById("random-number-holder");
-
             //Initialization
-            computerRandomValue = Math.floor(Math.random() * 120) + 1;
+            computerRandomValue = Math.floor(Math.random() * 101) + 19;
             $("#random-number-holder").append(computerRandomValue);
             for (i = 0; i < gemArray.length; i++) {
                 gemArray[i] = Math.floor(Math.random() * 12) + 1;
@@ -211,10 +184,6 @@
                 isWinEvaluation();
                 victoryDefeat();
             });
-
-
-
-
         });
     </script>
 
