@@ -42,16 +42,16 @@
             <div class="col-6" id="random-number-holder">Here is the space for the random number:     
             </div>
             <div class="col-6" id="records-box"> 
-                <p id="wins-text"> Wins: </p> 
-                <p id ="losses-text"> Losses: </p>
+                <p > Wins: <span id="wins-text">0</span></p> 
+                <p > Losses: <span id ="losses-text">0</span></p>
             </div>
         </div>
         <div class="row">            
             <div class="col-3">
                 <div  id="gem1" class="card" style="width: 18rem; height: 18rem;">
-                    <button value="0">
+                   
                         <img class="gem" value = "0" src="assets/images/bluegem.jpg" class="card-img-top" alt="blue" style="width: 200px; height: 200px;">
-                    </button>
+                 
                         <div class="card-body">
                             <p id="gem1-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -60,9 +60,9 @@
 
                 <div class="col-3 ">
                     <div  id="gem2" class="card" style="width: 18rem; height: 18rem;">
-                        <button value="1">
+                        
                             <img class="gem" value="1" src="assets/images/pinkgem.png" class="card-img-top" alt="pink" style="width: 200px; height: 200px;">
-                        </button>
+                      
                         <div class="card-body">
                             <p id="gem2-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -71,9 +71,9 @@
 
                 <div class="col-3 ">     
                     <div  id="gem3" class="card" style="width: 18rem; height: 18rem;">
-                        <button value="2" >
+                      
                             <img class="gem" value="2" src="assets/images/purplegem.jpg"" class=" card-img-top" alt="purple" style="width: 200px; height: 200px;">
-                        </button>
+                      
                         <div class="card-body">
                             <p id="gem3-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -82,10 +82,10 @@
                 </div>
 
                 <div class="col-3 ">
-                    <div  id="gem4" class="card" style="width: 18rem; height: 18rem; ">
-                        <button value="3" >
+                    <div  id="gem4" class="card random-value" style="width: 18rem; height: 18rem; ">
+                     
                             <img class="gem" value="3" src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
-                        </button>
+                      
                         <div class="card-body">
                             <p id="gem4-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -102,7 +102,7 @@
             <div class = "col-4">
                 <p id="demo"></p>
                 <div> Your total score is:</div>
-                    <div id="userdisplaytotal"> </div>
+                    <div id="running-total"> </div>
             </div>
         </div>  
     </div>
@@ -114,15 +114,16 @@
         //DECLARING VARIABLES
         wins = 0;
         losses = 0;
-//         onclick="revealFunction()"
-// onclick="revealFunction()"
-// onclick="revealFunction()"
-// onclick="revealFunction()"
-        var computerRandomValue = 0
+
+        var computerRandomValue = 1000;
         var gem1 = 0;
         var gem2 = 0;
         var gem3 = 0;
         var gem4 = 0;
+        var runningTotal=0;
+        var gemArray = [gem1, gem2, gem3, gem4];
+        var isWin=false;
+
         //COMMUNICATION BETWEEN JAVA AND USER ELEMENTS
         var gem1Text = document.getElementById("gem1-text");
         var gem2Text = document.getElementById("gem2-text");
@@ -131,73 +132,91 @@
         var winsText = document.getElementById("wins-text");
         var lossesText = document.getElementById("losses-text");
         var computerRandomValueText = document.getElementById("random-number-holder");
-        //var gemCollection = ["gem1", "gem2", "gem3", "gem4"];
+        
+   
+       //Initialization
+        computerRandomValue = Math.floor(Math.random() * 120) + 1;
+        computerRandomValueText.textContent = computerRandomValue;
+        for (i = 0; i < gemArray.length; i++) {
+             gemArray[i] = Math.floor(Math.random() * 12) + 1;
+                console.log(gemArray[i]);
+            } 
 
-        // var gem1 ={
-        //     value: 0;
-        //     visible: False;
-        // }
-       
-        // function revealValue() {
-        //     var x = document.getElementById("gem1-text");
-        //    var y= $(this).val()
-
-        // }
-
-        function randomizeValue() {
-            var gemArray = [gem1, gem2, gem3, gem4];
-            for (i = 0; i < gemArray.length; i++) {
-                gemArray[i] = Math.floor(Math.random() * 12) + 1;
+        function victoryDefeat() {
+            if ((isWin) || (runningTotal>computerRandomValue)) {
+                if (isWin) {
+                    wins++;
+                    $("#wins-text").text(wins);
+                    displayReset();
+                    randomizeValue();
+                }
+                else {
+                    losses++;
+                    $("#losses-text").text(losses);
+                    displayReset();
+                    randomizeValue();
+                }
             }
-            console.log("gemArray is " + gemArray);
-
-            computerRandomValue = Math.floor(Math.random() * 120) + 1;
-            computerRandomValueText.textContent = computerRandomValue;
-
-            console.log("Computerrandomvalue is " + computerRandomValue)
-
-            gem1Text.textContent = gemArray[0];
-            gem2Text.textContent = gemArray[1];
-            gem3Text.textContent = gemArray[2];
-            gem4Text.textContent = gemArray[3];
         }
 
+        function displayReset(){
+            runningTotal=0;
+            $("#running-total").text(runningTotal); 
+            $("#gem1-text").text("Click the Gem to see its value!");
+            $("#gem2-text").text("Click the Gem to see its value!");
+            $("#gem3-text").text("Click the Gem to see its value!");
+            $("#gem4-text").text("Click the Gem to see its value!");
+        }
+
+        function randomizeValue() {       
+            computerRandomValue = Math.floor(Math.random() * 120) + 1;
+            computerRandomValueText.textContent = computerRandomValue;
+            for (i = 0; i < gemArray.length; i++) {
+                gemArray[i] = Math.floor(Math.random() * 12) + 1;
+            } 
+            console.log("gemArray is " + gemArray);
+            console.log("Computerrandomvalue is " + computerRandomValue)
+        }
+        function isWinEvaluation() {
+            isWin= (runningTotal === computerRandomValue);
+        }
 
         $("#gem1").on("click", function(){
-            alert("You clicked Gem 1!");
-
+            $("#gem1-text").text("This Gem is worth " +gemArray[0]+ " points"); 
+            runningTotal+=gemArray[0];
+            $("#running-total").text(runningTotal);
+            isWinEvaluation();
+            victoryDefeat();
 
         });
         $("#gem2").on("click", function(){
-            alert("You clicked Gem 2!");
-
+            $("#gem2-text").text("This Gem is worth " +gemArray[1]+ " points"); 
+            runningTotal+=gemArray[1];
+            $("#running-total").text(runningTotal);
+            isWinEvaluation();
+            victoryDefeat();
 
         });
             
         $("#gem3").on("click", function(){
-            alert("You clicked Gem 3!");
+            $("#gem3-text").text("This Gem is worth " +gemArray[2]+ " points"); 
+            runningTotal+=gemArray[2];
+            $("#running-total").text(runningTotal);
+            isWinEvaluation();
+            victoryDefeat();
 
         });
         $("#gem4").on("click", function(){
-            alert("You clicked Gem 4!");
-
-
+            $("#gem4-text").text("This Gem is worth " +gemArray[3]+ " points"); 
+            runningTotal+=gemArray[3];
+            $("#running-total").text(runningTotal);
+            isWinEvaluation();
+            victoryDefeat();
         });
-            //
-            // console.log(this);
-            //console.log("The value of THIS coded with INT  " + parseInt($(this).val()));
-           // var a=this;
-            // console.log(a);
-           // parseInt(a);
-            // console.log("This is a after parsing " +a);
+          
+       
 
-
-            var gemValue = $(this).val();
-            console.log(gemValue);
-            console.log("This is the gemValue value passed from this " +gemValue);
-           // randomizeValue();
-
-            // console.log(computerRandomValue);
+    
         });
 
 
