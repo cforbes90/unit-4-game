@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Crystal Collector!</title>
+    <title>Gem Gatherer!</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
@@ -22,18 +22,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12" class="text-center">
-                <h1> Crystals Collector! </h1>
+                <h1> Gem Gatherer! </h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12" class="text-center">
-                <section id="text-directions"> You will be given a random number at the start of the Game
-                    <p> There are four crystals below. by clicking on a crystal you will add a specific amount of points
-                        to your total score.</p>
+                <section id="text-directions"> <p>You will be given a random number at the start of the game.</p>
+                    <p> There are four gems below. By clicking on a gem you will add a specific amount of points to your total score.</p>
                     <p> You win the game by matching your total score to a random number, you lose the game if your
                         total score goes above the random number.</p>
-                    <p> The value of each crystal is hidden from you until you click on it</p>
-                    <p> Eactime when the game starts, the game will change the values of each crystal.</p>
+                    <p> The value of each gem is hidden from you until you click on it.</p>
+                    <p> Each time when the game starts, the values of the gems will change.</p>
                 </section>
             </div>
         </div>
@@ -93,11 +92,7 @@
                 </div>
             
         </div>
-
-
-
-
-          
+         
         <div class="row">  
             <div class = "col-4">
                 <p id="demo"></p>
@@ -112,71 +107,73 @@
     $(document).ready(function() {
 
         //DECLARING VARIABLES
-        wins = 0;
-        losses = 0;
-
-        var computerRandomValue = 1000;
+        var wins = 0;
+        var losses = 0;
         var gem1 = 0;
         var gem2 = 0;
         var gem3 = 0;
         var gem4 = 0;
+        var isWin=false;
         var runningTotal=0;
         var gemArray = [gem1, gem2, gem3, gem4];
-        var isWin=false;
+        var computerRandomValue = 1000;
 
-        //COMMUNICATION BETWEEN JAVA AND USER ELEMENTS
-        var gem1Text = document.getElementById("gem1-text");
-        var gem2Text = document.getElementById("gem2-text");
-        var gem3Text = document.getElementById("gem3-text");
-        var gem4Text = document.getElementById("gem4-text");
-        var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text");
-        var computerRandomValueText = document.getElementById("random-number-holder");
+        //COMMUNICATION BETWEEN JAVASCRIPT AND HTML ELEMENTS
+        // var gem1Text = document.getElementById("gem1-text");
+        // var gem2Text = document.getElementById("gem2-text");
+        // var gem3Text = document.getElementById("gem3-text");
+        // var gem4Text = document.getElementById("gem4-text");
+        // var winsText = document.getElementById("wins-text");
+        // var lossesText = document.getElementById("losses-text");
+         var computerRandomValueText = document.getElementById("random-number-holder");
         
-   
        //Initialization
         computerRandomValue = Math.floor(Math.random() * 120) + 1;
         computerRandomValueText.textContent = computerRandomValue;
         for (i = 0; i < gemArray.length; i++) {
              gemArray[i] = Math.floor(Math.random() * 12) + 1;
-                console.log(gemArray[i]);
-            } 
-
+            //console.log(gemArray[i]);
+        } 
+        //WIN LOSS EVALUATION
         function victoryDefeat() {
             if ((isWin) || (runningTotal>computerRandomValue)) {
                 if (isWin) {
                     wins++;
                     $("#wins-text").text(wins);
+                    alert("Congratulations! You won!");
                     displayReset();
                     randomizeValue();
                 }
                 else {
                     losses++;
                     $("#losses-text").text(losses);
+                    alert("Oh no! You lost! Better luck next time!");
                     displayReset();
                     randomizeValue();
                 }
             }
         }
-
-        function displayReset(){
+        //RESETS NUMBERS VISIBLE TO USER
+        function displayReset() {
             runningTotal=0;
             $("#running-total").text(runningTotal); 
             $("#gem1-text").text("Click the Gem to see its value!");
             $("#gem2-text").text("Click the Gem to see its value!");
             $("#gem3-text").text("Click the Gem to see its value!");
             $("#gem4-text").text("Click the Gem to see its value!");
+            $("#random-number-holder").text("Here is the space for the random number: ")
         }
-
+        //RESETS NUMBERS FOR INTERNAL CALCULATION
         function randomizeValue() {       
-            computerRandomValue = Math.floor(Math.random() * 120) + 1;
+            computerRandomValue = Math.floor(Math.random() * 101) + 19;
             computerRandomValueText.textContent = computerRandomValue;
             for (i = 0; i < gemArray.length; i++) {
                 gemArray[i] = Math.floor(Math.random() * 12) + 1;
             } 
-            console.log("gemArray is " + gemArray);
-            console.log("Computerrandomvalue is " + computerRandomValue)
+            //console.log("gemArray is " + gemArray);
+            //console.log("Computerrandomvalue is " + computerRandomValue)
         }
+        //CONVERTS WINNING INTO BOOLEAN
         function isWinEvaluation() {
             isWin= (runningTotal === computerRandomValue);
         }
@@ -187,15 +184,14 @@
             $("#running-total").text(runningTotal);
             isWinEvaluation();
             victoryDefeat();
-
         });
+
         $("#gem2").on("click", function(){
             $("#gem2-text").text("This Gem is worth " +gemArray[1]+ " points"); 
             runningTotal+=gemArray[1];
             $("#running-total").text(runningTotal);
             isWinEvaluation();
             victoryDefeat();
-
         });
             
         $("#gem3").on("click", function(){
@@ -204,8 +200,8 @@
             $("#running-total").text(runningTotal);
             isWinEvaluation();
             victoryDefeat();
-
         });
+
         $("#gem4").on("click", function(){
             $("#gem4-text").text("This Gem is worth " +gemArray[3]+ " points"); 
             runningTotal+=gemArray[3];
@@ -217,11 +213,7 @@
        
 
     
-        });
-
-
-
-
+    });
     </script>
 
 
