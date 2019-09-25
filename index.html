@@ -70,7 +70,7 @@
             </div>
             <div class="col-3 ">
                 <div id="4" class="card random-value" style="width: 18rem; height: 18rem; ">
-                    <img class="gem" id="gem3" src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
+                    <img class="gem" id="gem3" value=3333 src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
                         <div class="card-body">
                         <p id="gem3-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -98,11 +98,12 @@
             var gem2 = 0;
             var gem3 = 0;
             var gem4 = 0;
-            var gemId=55;
+            var gemId = 0;
             var isWin = false;
             var runningTotal = 0;
+            var computerRandomValue = 0;
             var gemArray = [gem1, gem2, gem3, gem4];
-            var computerRandomValue = 1000;
+            
 
             //Initialization
             computerRandomValue = Math.floor(Math.random() * 101) + 19;
@@ -112,32 +113,23 @@
                 console.log(gemArray[i]);
             }
 
-
+            //THE BRAIN OF THE WHOLE OPERATION
             $(".gem").on("click", function () {
-               // console.log("this attribute is equal to "+($(this).attr("id")));
                 var gemId = $(this).attr("id");
-                //console.log("gemId is "+ gemId);
+                console.log ("gemId is "+gemId);
                 var gemNum = gemId.substr(3,1);
-                //gemNum = parseInt(gemNum);
-                //console.log("gemNum is "+gemNum);
                 var points = gemArray[gemNum];
-                //console.log("the points variable is " +points);
-                //gemNum+=1;//Why in the world does this work? 
-                $("#gem" +gemNum +"-text").text("This Gem is worth " + points + " points.");
-                //console.log($("#gem" +gemNum +"-text").text("This Gem is worth " + points + " points."));
-                runningTotal += points;
+                $("#gem" +gemNum +"-text").text("This Gem is worth " + points + " points.");                runningTotal += points;
                 updateTotals();
             });
-
+            //UPDATES USER FACING TOTALS AND PRACTICES NESTING FUNCTIONS
             function updateTotals(){
-                //runningTotal += gemArray[gemNum];
                 $("#running-total").text(runningTotal);
                 isWinEvaluation();
                 victoryDefeat();
             }
             
             //WIN LOSS EVALUATION
-
             function victoryDefeat() {
                 if ((isWin) || (runningTotal > computerRandomValue)) {
                     if (isWin) {
@@ -172,44 +164,12 @@
                 for (i = 0; i < gemArray.length; i++) {
                     gemArray[i] = Math.floor(Math.random() * 12) + 1;
                     console.log(gemArray[i]);
-
                 }
-                //console.log("gemArray is " + gemArray);
-                //console.log("Computerrandomvalue is " + computerRandomValue)
             }
             //CONVERTS WINNING INTO BOOLEAN
             function isWinEvaluation() {
                 isWin = (runningTotal === computerRandomValue);
             }
-
-            // $("#gem1").on("click", function () {
-            //     gemClick(1, gemArray[0]);
-            //     runningTotal += gemArray[0];
-            //     updateTotals();
-            // });
-
-            // $("#gem2").on("click", function () {
-            //     $("#gem2-text").text("This Gem is worth " + gemArray[1] + " points.");
-            //     runningTotal += gemArray[1];
-            //     updateTotals();
-            // });
-
-            // $("#gem3").on("click", function () {
-            //     $("#gem3-text").text("This Gem is worth " + gemArray[2] + " points.");
-            //     runningTotal += gemArray[2];
-            //     runningTotal();
-            //     // $("#running-total").text(runningTotal);
-            //     // isWinEvaluation();
-            //     // victoryDefeat();
-            // });
-
-            // $("#gem4").on("click", function () {
-            //     $("#gem4-text").text("This Gem is worth " + gemArray[3] + " points.");
-            //     runningTotal += gemArray[3];
-            //     $("#running-total").text(runningTotal);
-            //     isWinEvaluation();
-            //     victoryDefeat();
-            // });
         });
     </script>
 
