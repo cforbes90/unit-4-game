@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-3">
                 <div id="1" class="card" style="width: 18rem; height: 18rem;">
-                    <img class="gem" id="gem0" value="0" src="assets/images/bluegem.jpg" class="card-img-top" alt="blue" style="width: 200px; height: 200px;">
+                    <img class="gem" id="gem0" value=0 src="assets/images/bluegem.jpg" class="card-img-top" alt="blue" style="width: 200px; height: 200px;">
                         <div class="card-body">
                         <p id="gem0-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-3 ">
                 <div id="2" class="card" style="width: 18rem; height: 18rem;">
-                    <img class="gem" id="gem1" src="assets/images/pinkgem.png" class="card-img-top" alt="pink"  style="width: 200px; height: 200px;">
+                    <img class="gem" id="gem1" value=1 src="assets/images/pinkgem.png" class="card-img-top" alt="pink"  style="width: 200px; height: 200px;">
                         <div class="card-body">
                             <p id="gem1-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-3 ">
                 <div id="3" class="card" style="width: 18rem; height: 18rem;">
-                   <img class="gem" id="gem2" src="assets/images/purplegem.jpg"" class="    card-img-top" alt="purple" style="width: 200px; height: 200px;">
+                   <img class="gem" id="gem2" value=2 src="assets/images/purplegem.jpg"" class="    card-img-top" alt="purple" style="width: 200px; height: 200px;">
                     <div class="card-body">
                         <p id="gem2-text" class="card-text">Click the Gem to see its value!</p>
                     </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-3 ">
                 <div id="4" class="card random-value" style="width: 18rem; height: 18rem; ">
-                    <img class="gem" id="gem3" value=3333 src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
+                    <img class="gem" id="gem3" value=3 src="assets/images/yellowgem.jpg" class="card-img-top" alt="yellow" style="width: 200px; height: 200px;">
                         <div class="card-body">
                         <p id="gem3-text" class="card-text">Click the Gem to see its value!</p>
                         </div>
@@ -112,12 +112,9 @@
                 gemArray[i] = Math.floor(Math.random() * 12) + 1;
                 console.log(gemArray[i]);
             }
-
             //THE BRAIN OF THE WHOLE OPERATION
             $(".gem").on("click", function () {
-                var gemId = $(this).attr("id");
-                console.log ("gemId is "+gemId);
-                var gemNum = gemId.substr(3,1);
+                var gemNum = $(this).attr("value");
                 var points = gemArray[gemNum];
                 $("#gem" +gemNum +"-text").text("This Gem is worth " + points + " points.");                runningTotal += points;
                 updateTotals();
@@ -128,7 +125,10 @@
                 isWinEvaluation();
                 victoryDefeat();
             }
-            
+           //CONVERTS WINNING INTO BOOLEAN
+           function isWinEvaluation() {
+                isWin = (runningTotal === computerRandomValue);
+            } 
             //WIN LOSS EVALUATION
             function victoryDefeat() {
                 if ((isWin) || (runningTotal > computerRandomValue)) {
@@ -136,26 +136,27 @@
                         wins++;
                         $("#wins-text").text(wins);
                         alert("Congratulations! You won!");
-                        displayReset();
-                        randomizeValue();
                     }
                     else {
                         losses++;
                         $("#losses-text").text(losses);
                         alert("Oh no, you lost! Better luck next time!");
-                        displayReset();
-                        randomizeValue();
                     }
+                    beginAgain();
                 }
+            }
+            //REGARDLESS OF OUTCOME THE GAME MUST BE RESET
+            function beginAgain() {
+                displayReset();
+                randomizeValue();
             }
             //RESETS NUMBERS VISIBLE TO USER
             function displayReset() {
                 runningTotal = 0;
                 $("#running-total").text(runningTotal);
-                $("#gem0-text").text("Click the Gem to see its value!");
-                $("#gem1-text").text("Click the Gem to see its value!");
-                $("#gem2-text").text("Click the Gem to see its value!");
-                $("#gem3-text").text("Click the Gem to see its value!");
+                for (i = 0; i < 4; i++) {
+                $("#gem"+i+"-text").text("Click the Gem to see its value!");
+                }
             }
             //RESETS NUMBERS FOR INTERNAL CALCULATION
             function randomizeValue() {
@@ -165,16 +166,9 @@
                     gemArray[i] = Math.floor(Math.random() * 12) + 1;
                     console.log(gemArray[i]);
                 }
-            }
-            //CONVERTS WINNING INTO BOOLEAN
-            function isWinEvaluation() {
-                isWin = (runningTotal === computerRandomValue);
-            }
+            }           
         });
     </script>
-
-
-
 </body>
 
 </html>
